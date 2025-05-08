@@ -1,0 +1,14 @@
+from sklearn.linear_model import Lasso, Ridge
+
+wine_data = pd.read_csv('winequality-red.csv', sep=';')
+X = wine_data.drop('quality', axis=1)
+y = wine_data['quality']
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+
+lasso = Lasso(alpha=0.1)
+lasso.fit(X_train, y_train)
+print("Lasso Score:", lasso.score(X_test, y_test))
+
+ridge = Ridge(alpha=1.0)
+ridge.fit(X_train, y_train)
+print("Ridge Score:", ridge.score(X_test, y_test))
