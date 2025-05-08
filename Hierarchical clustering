@@ -1,0 +1,9 @@
+from scipy.cluster.hierarchy import linkage, dendrogram
+import matplotlib.pyplot as plt
+
+linked = linkage(iris.data, 'ward')
+dendrogram(linked, labels=iris.target)
+plt.title('Hierarchical Clustering Dendrogram')
+plt.xlabel('Sample Index')
+plt.ylabel('Distance')
+plt.show()
